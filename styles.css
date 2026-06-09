@@ -1,0 +1,829 @@
+/* ==========================================================================
+   1. RESET & VARIABLES
+   ========================================================================== */
+
+/* The Reset: Stops different browsers from adding random default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* The Color Palette: Easy to change later if you want a different vibe */
+:root {
+    --bg-dark: #121212;       /* Deep vintage room background */
+    --counter-wood: #2c1d11;  /* Rich wood brown for the counter elements */
+    --vinyl-black: #1a1a1a;   /* Matte black for record elements */
+    --text-light: #f5f5f5;    /* Off-white for easy reading */
+    --accent-gold: #f39c12;   /* Vintage neon/gold for links and highlights */
+    --text-muted: #888888;    /* Gray for smaller secondary text */
+}
+
+/* ==========================================================================
+   2. BASE STYLES
+   ========================================================================== */
+
+body {
+    font-family: 'Courier New', Courier, monospace; /* Gives a vintage typewriter/receipt feel */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Styling links so they don't look like default blue 1990s internet links */
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e67e22; /* Warmer orange/gold on hover */
+}
+
+/* Keeping lists clean for our menus */
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   3. HEADER STYLES (The Store Sign)
+   ========================================================================== */
+
+header {
+    display: flex;
+    justify-content: space-between; /* Pushes name to the left, date to the right */
+    align-items: center;            /* Vertically centers them alignment-wise */
+    padding: 20px 0;
+    border-bottom: 2px dashed var(--accent-gold); /* Like a vintage receipt tear line */
+    margin-bottom: 40px;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.logo p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   4. THE COUNTER LAYOUT (The Hub)
+   ========================================================================== */
+
+#the-counter {
+    max-width: 1000px;
+    margin: 0 auto; /* Centers the whole counter on wide screens */
+}
+
+.shopkeeper-intro {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.shopkeeper-intro h2 {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+/* --- THE GRID --- */
+.counter-menu ul {
+    display: grid;
+    /* Creates a grid that automatically wraps cards if the screen gets too small.
+       Min card width is 280px, max is equal sharing of space (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Space between the grid items */
+}
+
+/* The Counter Items (The Interactive Blocks) */
+.counter-item {
+    display: block; /* Makes the entire block clickable */
+    background-color: var(--vinyl-black);
+    border: 2px solid #333;
+    padding: 25px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover effects to make it feel like an interactive checkout counter */
+.counter-item:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    border-color: var(--accent-gold);
+}
+
+.item-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgba(243, 156, 18, 0.1); /* Very faint background number vibe */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.counter-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+/* Changes the card title color specifically when the whole card is hovered */
+.counter-item:hover h3 {
+    color: var(--accent-gold);
+}
+
+.counter-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. WORKSPACE BEHAVIOR (Option B: The Countertop Viewport)
+   ========================================================================== */
+
+/* Hide all store sections by default */
+.store-section {
+    display: none;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--vinyl-black);
+    border: 2px solid var(--accent-gold);
+    padding: 40px;
+    border-radius: 4px;
+}
+
+/* This special class will be added by JavaScript to reveal a section */
+.store-section.active {
+    display: block;
+    /* A quick CSS animation to make the section fade in smoothly */
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style for the back buttons inside the sections */
+.back-to-counter {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed var(--accent-gold);
+    padding-bottom: 2px;
+}
+
+/* ==========================================================================
+   6. PORTFOLIO GRID & VINYL ANIMATION
+   ========================================================================== */
+
+/* The Grid Shelf structure */
+.record-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.record-card {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stacking Container for the Jacket and Vinyl Record */
+.album-container {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 20px auto;
+}
+
+/* --- THE JACKET (The Front Plate) --- */
+.vinyl-jacket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222; /* Fallback color */
+    border: 1px solid #333;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+    z-index: 2; /* Sits directly in front of the vinyl record */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.catalog-number {
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+}
+
+.jacket-art {
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 10px;
+    background: linear-gradient(135deg, #1e1e1e 0%, #111 100%);
+}
+
+.jacket-art h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.release-tech {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+/* --- THE VINYL DISC (The Hidden Gem) --- */
+.vinyl-disc {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 230px;
+    height: 230px;
+    background: radial-gradient(circle, #333 4%, #111 4%, #111 20%, #000 20%);
+    border-radius: 50%;
+    z-index: 1; /* Tucked cleanly behind the jacket */
+    box-shadow: inset 0 0 10px #000, 2px 2px 10px rgba(0,0,0,0.5);
+    
+    /* Smooth movement and continuous spin configuration */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Tiny circular label details inside the vinyl record */
+.vinyl-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+    border: 2px dashed #000;
+}
+
+/* --- THE HOVER TRIGGER AUTOMATION --- */
+/* When a user hovers anywhere over the container, pull the vinyl out to the right */
+.album-container:hover .vinyl-disc {
+    transform: translateX(110px) rotate(180deg);
+}
+
+/* Optional: Keep spinning the record forever while looking at it */
+.album-container:hover .vinyl-disc {
+    animation: continuousSpin 4s linear infinite 0.5s; /* Starts after sliding out */
+}
+
+@keyframes continuousSpin {
+    from { transform: translateX(110px) rotate(0deg); }
+    to { transform: translateX(110px) rotate(360deg); }
+}
+
+/* --- TEXT DETAILS BELOW THE RECORD --- */
+.album-details {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.album-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.album-details p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 15px;
+    height: 60px; /* Limits size height uniformity across items */
+    overflow: hidden;
+}
+
+.listen-btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid var(--accent-gold);
+    padding: 8px 16px;
+    border-radius: 3px;
+}
+
+.listen-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+}
+
+/* ==========================================================================
+   7. GENRE BINS & STACKS STYLES
+   ========================================================================== */
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* The Shelf Layout holding the partitions side-by-side */
+.genre-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Individual Wooden Bin Structure */
+.genre-bin {
+    background-color: #161616;
+    border: 1px solid #252525;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* The visual structural card divider standing up top */
+.bin-divider {
+    background-color: var(--counter-wood);
+    padding: 15px 20px;
+    border-bottom: 3px solid #1c120b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bin-divider h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Small tag sticker on the divider header */
+.bin-tag {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+}
+
+/* The lists of interests tucked nicely inside the bin box */
+.bin-contents {
+    padding: 20px;
+}
+
+.bin-contents ul li {
+    padding: 12px 0;
+    border-bottom: 1px dashed #262626;
+    font-size: 0.9rem;
+}
+
+/* Clear the bottom border for the last list item */
+.bin-contents ul li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.bin-contents ul li:first-child {
+    padding-top: 0;
+}
+
+.bin-contents strong {
+    color: var(--text-light);
+    display: block;
+}
+
+/* Sub-text inside the item lists */
+.tag-meta {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    display: inline-block;
+    margin-top: 2px;
+}
+
+/* Tactile interaction: make the bin lift forward when digging through it */
+.genre-bin:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   8. MINI VINYL POP-OUT ANIMATION FOR INTEREST ITEMS
+   ========================================================================== */
+
+/* Make the list row a relative container for layout masking */
+.bin-contents ul li {
+    padding: 0; /* Clear padding from before to allow complete element masking */
+    border-bottom: 1px dashed #262626;
+    overflow: hidden; /* Keeps the mini vinyl hidden until it slides out */
+}
+
+.bin-contents ul li:last-child {
+    border-bottom: none;
+}
+
+/* The inner row wrapper holding our text and hidden element */
+.interest-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    position: relative;
+    cursor: pointer;
+    background-color: #161616;
+    z-index: 2;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.interest-text {
+    z-index: 3; /* Keeps text layered cleanly on top of slide mechanisms */
+}
+
+/* --- THE MINI VINYL (Tucked away on the right edge) --- */
+.mini-vinyl {
+    width: 32px;
+    height: 32px;
+    background: radial-gradient(circle, var(--accent-gold) 15%, #111 16%, #000 100%);
+    border-radius: 50%;
+    position: absolute;
+    right: -40px; /* Hidden completely outside the list border bounds */
+    top: calc(50% - 16px); /* Center vertically */
+    z-index: 1;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), right 0.3s ease;
+}
+
+/* --- THE HOVER SELECTION MECHANICS --- */
+
+/* 1. Lift the text row up and slightly shift it left to create room */
+.interest-item:hover {
+    background-color: #1d1d1d;
+    transform: translateX(-5px);
+}
+
+/* 2. Highlight text title color on active hover */
+.interest-item:hover strong {
+    color: var(--accent-gold);
+}
+
+/* 3. Shoot the vinyl circle out into view while spinning it */
+.interest-item:hover .mini-vinyl {
+    right: 15px; /* Pull into view within the card spacing boundaries */
+    transform: rotate(360deg);
+}
+
+/* ==========================================================================
+   9. BUSINESS CARD & RESUME TICKET STYLES
+   ========================================================================== */
+
+.card-section-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: center;
+    max-width: 850px;
+    margin: 30px auto 0 auto;
+}
+
+/* --- THE BUSINESS CARD LOOK --- */
+.business-card {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    padding: 30px;
+    aspect-ratio: 1.75 / 1; /* Gives it strict, premium business card proportions */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
+    position: relative;
+    border-radius: 4px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+    padding-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.card-stamp {
+    font-size: 0.6rem;
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+    padding: 2px 5px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.card-body h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.card-title {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.card-bio {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-top: 1px solid #2d2d2d;
+    padding-top: 10px;
+}
+
+/* --- THE SERVICE TICKET LOOK --- */
+.resume-ticket {
+    background-color: var(--vinyl-black);
+    border: 2px dashed #444; /* Dashed border to look like a rip-off ticket stub */
+    padding: 30px;
+    border-radius: 4px;
+    
+    /* Mirroring the size metrics of the business card */
+    aspect-ratio: 1.75 / 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes header to top, button to bottom */
+}
+
+.resume-ticket h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.ticket-description {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Download Ticket Button */
+.download-card-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+.download-card-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+}
+
+.btn-arrow {
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   10. SPECIAL ORDERS FORM & CASSETTE STYLES
+   ========================================================================== */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* --- THE SPECIAL ORDER FORM --- */
+.special-order-form {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #333;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.form-header h3 {
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+}
+
+.form-serial {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Designing inputs to look like paper entry lines */
+.form-group input, .form-group textarea {
+    background-color: #121212;
+    border: 1px solid #333;
+    padding: 12px;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 0.9rem;
+    border-radius: 2px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.form-group textarea {
+    resize: none;
+    height: 120px;
+}
+
+.submit-order-btn {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.submit-order-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+}
+
+/* --- THE CASSETTE TAPE RACK --- */
+.cassette-rack {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cassette-rack h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    color: var(--text-light);
+}
+
+/* Outer Shell of the Cassette */
+.cassette-tape {
+    width: 100%;
+    max-width: 340px;
+    height: 110px;
+    background-color: #262626; /* Dark plastic casing */
+    border: 2px solid #1c1c1c;
+    border-radius: 6px;
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    margin: 0 auto;
+}
+
+/* Sticker Label on the Tape Face */
+.cassette-label {
+    background: linear-gradient(to bottom, #f1f1f1 0%, #e2e2e2 100%);
+    height: 65px;
+    border-radius: 3px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 6px solid var(--accent-gold); /* Fun color accent block */
+}
+
+.tape-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #111;
+    letter-spacing: 0.5px;
+}
+
+/* Center window displaying the reels */
+.tape-reels {
+    width: 90px;
+    height: 24px;
+    background-color: #111;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 8px;
+}
+
+/* Mini cog teeth spinning inside the wheels */
+.reelleft, .reelright {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 3px dashed var(--accent-gold);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+}
+
+/* The distinct tape head trapezoid block at the bottom edge */
+.cassette-trapezoid {
+    width: 140px;
+    height: 15px;
+    background-color: #1c1c1c;
+    margin: 0 auto;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+}
+
+/* --- INTERACTIVE TAPE HOVERS --- */
+.cassette-tape:hover {
+    transform: scale(1.03) translateY(-2px);
+    border-color: var(--accent-gold);
+}
+
+/* Make the gears spin smoothly while your mouse is on the tape link */
+.cassette-tape:hover .reelleft, 
+.cassette-tape:hover .reelright {
+    transform: rotate(360deg);
+}
+
+/* Change accent stripe on tape based on branding */
+.github-tape .cassette-label { border-left-color: #24292e; }
+.linkedin-tape .cassette-label { border-left-color: #0077b5; }
