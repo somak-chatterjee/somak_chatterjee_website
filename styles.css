@@ -827,3 +827,79 @@ header {
 /* Change accent stripe on tape based on branding */
 .github-tape .cassette-label { border-left-color: #24292e; }
 .linkedin-tape .cassette-label { border-left-color: #0077b5; }
+
+/* ==========================================================================
+   11. CUSTOM GUESTBOOK DROP-DOWN STYLING
+   ========================================================================== */
+
+/* Tailored styling for the Track Selection Dropdown */
+#visitor-genre {
+    width: 100%;
+    padding: 12px; /* Matches your form text fields precisely */
+    font-family: inherit; /* Inherits the typewriter layout font-family */
+    font-size: 0.9rem; /* Matches your form input sizes */
+    background-color: #121212; /* Matches your form input background color */
+    color: var(--text-light); /* Matches your form input text color */
+    border: 1px solid #333; /* Matches your standard form entry border color */
+    border-radius: 2px; /* Matches your text inputs' explicit sharp cornering */
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+    
+    /* Custom CSS drop-down arrow override using your active accent-gold hex */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path fill='%23f39c12' d='M0 3l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+    padding-right: 35px; /* Leave breathing space for your custom gold arrow */
+}
+
+/* Coordinates option list colors when expanding the selector menu */
+#visitor-genre option {
+    background-color: #1e1e1e; /* Matches your custom card panels */
+    color: var(--text-light);
+    padding: 10px;
+}
+
+/* Triggers an identical neon highlight focus glow on click */
+#visitor-genre:focus {
+    border-color: var(--accent-gold);
+}
+
+/* Styles the dropdown text color when the placeholder option is active */
+#visitor-genre:invalid {
+    color: var(--text-muted); /* Matches your global grey placeholder/muted text color */
+}
+
+/* Restores the crisp light color as soon as a valid track selection is picked */
+#visitor-genre option:not([value=""]) {
+    color: var(--text-light);
+}
+
+/* ==========================================================================
+   12. STATION LEDGER DISPLAY CLEANUP
+   ========================================================================== */
+.log-entry {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #333;
+    font-size: 0.85rem;
+}
+.log-vibe {
+    color: var(--accent-gold);
+    margin-right: 5px;
+    font-weight: bold;
+}
+.log-msg {
+    margin: 5px 0;
+    color: #cccccc;
+    font-style: italic;
+}
+.log-date {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+}

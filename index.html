@@ -275,21 +275,33 @@
                         <span class="form-serial">NO. 2026-B</span>
                     </div>
                     
-                    <form>
+                    <form id="order-sheet-form">
                         <div class="form-group">
                             <label>Client Name:</label>
-                            <input type="text" placeholder="John Doe" required>
+                            <input type="text" id="visitor-name" placeholder="Your Name / Handle" required>
                         </div>
                         <div class="form-group">
-                            <label>Return Address (Email):</label>
-                            <input type="email" placeholder="john@example.com" required>
+                            <label>Track Selection:</label>
+                            <select id="visitor-genre" required>
+                                <option value="" disabled selected hidden>Select your genre</option>
+                                
+                                <option value="Lo-Fi Vibe">Lo-Fi Vibe</option>
+                                <option value="Deep House">Deep House</option>
+                                <option value="Acid Techno">Acid Techno</option>
+                                <option value="Heavy Rotation">Heavy Rotation</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Project Specs (Message):</label>
-                            <textarea placeholder="Describe the track, feature, or project pipeline you want to press..."></textarea>
+                            <textarea id="visitor-message" placeholder="Describe the track, feature, or drop a review note..." required></textarea>
                         </div>
                         <button type="submit" class="submit-order-btn">Submit Order</button>
                     </form>
+
+                    <div id="listening-post-log" style="margin-top: 2rem; border-top: 2px dashed var(--border-color, #ccc); padding-top: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Your Station Logs</h4>
+                        <div id="messages-container">Loading track logs...</div>
+                    </div>
                 </div>
 
                 <div class="cassette-rack">
