@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Map and safely render the array
             messagesContainer.innerHTML = logs.map(log => `
                 <div class="log-entry">
-                    <span class="log-vibe">[${log.track_vibe || 'Ambient'}]</span>
+                    <span class="log-vibe">[${log.genre || 'Ambient'}]</span>
                     <strong>${escapeHTML(log.name)}:</strong>
                     <p class="log-msg">"${escapeHTML(log.message)}"</p>
                     <small class="log-date">${new Date(log.created_at).toLocaleDateString()}</small>
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const payload = {
                 name: document.getElementById('visitor-name').value,
-                track_genre: document.getElementById('visitor-genre').value,
+                genre: document.getElementById('visitor-genre').value,
                 message: document.getElementById('visitor-message').value,
                 visitor_token: visitorToken
             };
