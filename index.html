@@ -20,7 +20,7 @@
         <section id="the-counter">
             <div class="shopkeeper-intro">
                 <h2>Welcome to the Counter</h2>
-                <p>Hey there, I'm Somak! Welcome to Chatterjee Records! What sounds are you looking to dig for today?</p>
+                <p>Hey there, I'm Somak! Welcome to my website, Chatterjee Records! Here I share my passion for music and tech. Whether it's talking about my latest projects or musing about music, I'm glad you're here! Feel free to take a look around!</p>
             </div>
 
             <nav class="counter-menu">
@@ -29,7 +29,7 @@
                         <a href="#about" class="counter-item">
                             <span class="item-number">01</span>
                             <h3>Meet the Shopkeeper</h3>
-                            <p>Flip through my background, skills, and philosophy.</p>
+                            <p>Flip through my background and skills.</p>
                         </a>
                     </li>
                     <li>
@@ -50,7 +50,7 @@
                         <a href="#contact" class="counter-item">
                             <span class="item-number">04</span>
                             <h3>Drop a Note (Contact)</h3>
-                            <p>Leave a message in the suggestion box.</p>
+                            <p>Have something special in mind? Feel free to contact me!.</p>
                         </a>
                     </li>
                 </ul>
@@ -68,22 +68,22 @@
                     </div>
                     
                     <div class="card-body">
-                        <h3>Your Name</h3>
-                        <p class="card-title">Software Engineer & Systems Operator</p>
+                        <h3>Somak Chatterjee</h3>
+                        <p class="card-title">Full-Stack Developer</p>
                         <p class="card-bio">
-                            Specializing in robust full-stack web platforms and systematic data analysis pipelines. Focused on clean engineering architectures that stand the test of time.
+                            Specializing in robust backend architectures, full-stack systems, and data analysis pipelines. Merging clean engineering design with modern web technologies to press high-performance platforms.
                         </p>
                     </div>
                     
                     <div class="card-footer">
-                        <p>Groningen, NL</p>
+                        <p>Gurugram, India</p>
                         <p>est. 2026</p>
                     </div>
                 </div>
 
                 <div class="resume-ticket">
-                    <h3>Full Dossier</h3>
-                    <p class="ticket-description">Looking for the complete track record? Grab my full professional resume below.</p>
+                    <h3>Full Discography</h3>
+                    <p class="ticket-description">Want a complete list of my experience? Grab my full professional resume below.</p>
                     
                     <a href="/.netlify/functions/download_resume" class="download-card-btn">
                         <span>Download Resume</span>
@@ -99,7 +99,7 @@
             
             <div class="record-grid">
                 
-                <article class="record-card">
+                <article class="record-card" id="card-st001">
                     <div class="album-container">
                         <div class="vinyl-disc">
                             <div class="vinyl-label"></div>
@@ -111,11 +111,45 @@
                                 <p class="release-tech">Python & PyTorch</p>
                             </div>
                         </div>
+
+                        <!-- Back of the Album: Tracklist Panel for ST-001 -->
+                        <div class="album-back-cover">
+                            <div class="tracklist-header">
+                                <span class="catalog-number">ST-001 // B-SIDE</span>
+                                <h4>Tracklist & Deployment</h4>
+                            </div>
+                            <ul class="tracklist-links">
+                                <li>
+                                    <a href="https://github.com/somak-chatterjee/YOUR-REPO-NAME" target="_blank" class="track-link">
+                                        <span class="track-num">A1</span>
+                                        <span class="track-title">Source Code (GitHub)</span>
+                                        <span class="track-badge">Repo ↗</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://hub.docker.com/r/somak-chatterjee/YOUR-CONTAINER" target="_blank" class="track-link">
+                                        <span class="track-num">A2</span>
+                                        <span class="track-title">Containerized Image</span>
+                                        <span class="track-badge">Docker ↗</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://your-live-deployment.app" target="_blank" class="track-link">
+                                        <span class="track-num">B1</span>
+                                        <span class="track-title">Live Production Build</span>
+                                        <span class="track-badge">Web App ↗</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <button type="button" class="close-tracklist-btn" onclick="toggleTracklist('card-st001')">⮌ Flip to Front</button>
+                        </div>
                     </div>
                     <div class="album-details">
                         <h3>Breast Cancer Classification</h3>
                         <p>A CNN image analysis platform engineered for precise tumor diagnostics.</p>
-                        <a href="#" class="listen-btn">Listen Now (View Project)</a>
+                        <button type="button" class="listen-btn flip-btn" onclick="toggleTracklist('card-st001')">
+                            ▶ Listen Now (Tracklist / Demos)
+                        </button>
                     </div>
                 </article>
 
@@ -284,7 +318,7 @@
                             <label>Track Selection:</label>
                             <select id="visitor-genre" required>
                                 <option value="" disabled selected hidden>Select your genre</option>
-                                
+
                                 <option value="Lo-Fi Vibe">Lo-Fi Vibe</option>
                                 <option value="Deep House">Deep House</option>
                                 <option value="Acid Techno">Acid Techno</option>

@@ -212,6 +212,7 @@ header {
     width: 240px;
     height: 240px;
     margin: 0 auto 20px auto;
+    overflow: hidden;
 }
 
 /* --- THE JACKET (The Front Plate) --- */
