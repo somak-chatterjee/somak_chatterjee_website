@@ -104,7 +104,7 @@
                         <div class="vinyl-disc">
                             <div class="vinyl-label"></div>
                         </div>
-                        <div class="vinyl-jacket">
+                        <div class="vinyl-jacket" onclick="openLightbox('card-st001')" title="Click to inspect album art">
                             <span class="catalog-number">ST-001</span>
                             <div class="jacket-art">
                                 <h3>Project One</h3>
@@ -365,6 +365,21 @@
     <footer>
         <p>&copy; 2026 Chatterjee Records.</p>
     </footer>
+
+    <!-- Vinyl Jacket Art Lightbox Modal -->
+    <dialog id="album-lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button type="button" class="lightbox-close-btn" onclick="document.getElementById('album-lightbox').close()">✕</button>
+            <div id="lightbox-art-target" class="lightbox-jacket">
+                <!-- Dynamic jacket art cloned here via JS -->
+            </div>
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title">Album Title</h3>
+                <p id="lightbox-tech">Tech Stack</p>
+                <span class="lightbox-hint">Gatefold Sleeve View // Chatterjee Records Archive</span>
+            </div>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>

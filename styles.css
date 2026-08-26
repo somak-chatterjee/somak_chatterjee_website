@@ -212,7 +212,7 @@ header {
     width: 240px;
     height: 240px;
     margin: 0 auto 20px auto;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* --- THE JACKET (The Front Plate) --- */
@@ -962,4 +962,91 @@ header {
     background: rgba(243, 156, 18, 0.1);
     border-color: var(--accent-gold);
     color: var(--accent-gold);
+}
+
+/* --- Album Art Lightbox Modal --- */
+.lightbox-modal {
+    border: 1px solid var(--accent-gold);
+    border-radius: 6px;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 0;
+    max-width: 90vw;
+    width: 420px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-modal::backdrop {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.lightbox-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.lightbox-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lightbox-close-btn:hover {
+    color: var(--accent-gold);
+}
+
+.lightbox-jacket {
+    width: 280px;
+    height: 280px;
+    background: var(--vinyl-black);
+    border: 2px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 8px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 16px;
+}
+
+.lightbox-caption {
+    text-align: center;
+}
+
+.lightbox-caption h3 {
+    margin: 0 0 4px 0;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.lightbox-caption p {
+    margin: 0 0 8px 0;
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+.lightbox-hint {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Give the jacket a pointer cursor so visitors know it's inspectable */
+.vinyl-jacket {
+    cursor: zoom-in;
 }

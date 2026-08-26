@@ -144,3 +144,30 @@ function toggleTracklist(cardId) {
         card.classList.toggle('show-back');
     }
 }
+
+function openLightbox(cardId) {
+    const card = document.getElementById(cardId);
+    const modal = document.getElementById('album-lightbox');
+    if (!card || !modal) return;
+
+    const jacketArt = card.querySelector('.jacket-art');
+    const title = card.querySelector('.album-details h3')?.innerText || 'Release Art';
+    const tech = card.querySelector('.release-tech')?.innerText || '';
+
+    // Populate modal details
+    document.getElementById('lightbox-title').innerText = title;
+    document.getElementById('lightbox-tech').innerText = tech;
+    
+    const target = document.getElementById('lightbox-art-target');
+    target.innerHTML = jacketArt ? jacketArt.innerHTML : '';
+
+    modal.showModal();
+}
+
+function closeLightbox(event) {
+    // Closes dialog when clicking on the backdrop
+    const modal = document.getElementById('album-lightbox');
+    if (event.target === modal) {
+        modal.close();
+    }
+}
