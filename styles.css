@@ -232,6 +232,30 @@ header {
     justify-content: space-between;
 }
 
+.album-back-cover {
+    position: absolute;
+    inset: 0;
+    background: var(--vinyl-black);
+    border: 1px solid #333;
+    color: var(--text-light);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: rotateY(90deg);
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+.record-card.show-back .album-back-cover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: rotateY(0deg);
+}
+
 .catalog-number {
     font-size: 0.7rem;
     color: var(--accent-gold);
@@ -324,17 +348,24 @@ header {
 
 .listen-btn {
     display: inline-block;
+    font-family: inherit;
     font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: bold;
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
     border: 1px solid var(--accent-gold);
     padding: 8px 16px;
     border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .listen-btn:hover {
-    background-color: var(--accent-gold);
-    color: var(--bg-dark);
+    background-color: var(--bg-dark);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
 }
 
 /* ==========================================================================
@@ -903,4 +934,32 @@ header {
     color: var(--text-muted);
     font-size: 0.75rem;
     display: block;
+}
+
+.tracklist-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.track-link {
+    display: block;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed #333;
+    border-radius: 2px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: monospace;
+    transition: all 0.2s ease;
+}
+
+.track-link:hover {
+    background: rgba(243, 156, 18, 0.1);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
 }

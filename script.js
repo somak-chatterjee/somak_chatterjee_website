@@ -1,10 +1,3 @@
-function toggleTracklist(cardId) {
-    const card = document.getElementById(cardId);
-    if (card) {
-        card.classList.toggle('show-back');
-    }
-}
-
 // Wait for the HTML document to fully load before running the script
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -144,3 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fire the initial data load on startup
     loadListeningLogs();
 });
+
+function toggleTracklist(cardId) {
+    const card = document.getElementById(cardId);
+    if (card) {
+        card.classList.toggle('show-back');
+    }
+}
