@@ -154,18 +154,22 @@ function openLightbox(cardId) {
     const title = card.querySelector('.album-details h3')?.innerText || 'Release Art';
     const tech = card.querySelector('.release-tech')?.innerText || '';
 
-    // Populate modal details
-    document.getElementById('lightbox-title').innerText = title;
-    document.getElementById('lightbox-tech').innerText = tech;
-    
+    const titleEl = document.getElementById('lightbox-title');
+    const techEl = document.getElementById('lightbox-tech');
     const target = document.getElementById('lightbox-art-target');
-    target.innerHTML = jacketArt ? jacketArt.innerHTML : '';
 
-    modal.showModal();
+    if (titleEl) titleEl.innerText = title;
+    if (techEl) techEl.innerText = tech;
+    if (target) target.innerHTML = jacketArt ? jacketArt.innerHTML : '';
+
+    if (typeof modal.showModal === 'function') {
+        modal.showModal();
+    } else {
+        modal.setAttribute('open', '');
+    }
 }
 
 function closeLightbox(event) {
-    // Closes dialog when clicking on the backdrop
     const modal = document.getElementById('album-lightbox');
     if (event.target === modal) {
         modal.close();

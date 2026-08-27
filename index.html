@@ -147,23 +147,52 @@
                     </div>
                 </article>
 
-                <article class="record-card">
+                <article class="record-card" id="card-st002">
                     <div class="album-container">
                         <div class="vinyl-disc">
                             <div class="vinyl-label"></div>
                         </div>
-                        <div class="vinyl-jacket">
+                        <div class="vinyl-jacket" onclick="openLightbox('card-st002')" title="Click to inspect album art">
                             <span class="catalog-number">ST-002</span>
                             <div class="jacket-art">
                                 <h3>Project Two</h3>
                                 <p class="release-tech">Node.js & SvelteKit</p>
                             </div>
                         </div>
+
+                        <!-- Back of the Album: Tracklist Panel for ST-002 -->
+                        <div class="album-back-cover">
+                            <div class="tracklist-header">
+                                <span class="catalog-number">ST-002 // B-SIDE</span>
+                                <h4>Tracklist & Deployment</h4>
+                            </div>
+                            <ul class="tracklist-links">
+                                <li>
+                                    <a href="https://github.com/somak-chatterjee/YOUR-REPO-NAME" target="_blank" class="track-link">
+                                        A1. Source Code (GitHub) ↗
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://hub.docker.com/r/somak-chatterjee/YOUR-CONTAINER" target="_blank" class="track-link">
+                                        A2. Container Image (Docker) ↗
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://your-live-deployment.app" target="_blank" class="track-link">
+                                        B1. Live Production Build ↗
+                                    </a>
+                                </li>
+                            </ul>
+                            <button type="button" class="close-tracklist-btn" onclick="toggleTracklist('card-st002')">⮌ Flip to Front</button>
+                        </div>
                     </div>
+
                     <div class="album-details">
                         <h3>Full-Stack Global Platform</h3>
                         <p>An enterprise application featuring multi-language integration and live AI models.</p>
-                        <a href="#" class="listen-btn">Listen Now (View Project)</a>
+                        <button type="button" class="listen-btn" onclick="toggleTracklist('card-st002')">
+                            ▶ Listen Now (Tracklist / Demos)
+                        </button>
                     </div>
                 </article>
             </div>
