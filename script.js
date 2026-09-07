@@ -150,7 +150,7 @@ function openLightbox(cardId) {
     const modal = document.getElementById('album-lightbox');
     if (!card || !modal) return;
 
-    const jacketArt = card.querySelector('.jacket-art');
+    const img = card.querySelector('.jacket-cover-img');
     const title = card.querySelector('.album-details h3')?.innerText || 'Release Art';
     const tech = card.querySelector('.release-tech')?.innerText || '';
 
@@ -160,7 +160,16 @@ function openLightbox(cardId) {
 
     if (titleEl) titleEl.innerText = title;
     if (techEl) techEl.innerText = tech;
-    if (target) target.innerHTML = jacketArt ? jacketArt.innerHTML : '';
+
+    // Render image inside the modal if present, otherwise fall back to jacket text
+    if (target) {
+        if (img) {
+            target.innerHTML = `<img src="${img.src}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">`;
+        } else {
+            const jacketArt = card.querySelector('.jacket-art');
+            target.innerHTML = jacketArt ? jacketArt.innerHTML : '';
+        }
+    }
 
     if (typeof modal.showModal === 'function') {
         modal.showModal();

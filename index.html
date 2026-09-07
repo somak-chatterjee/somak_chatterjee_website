@@ -104,33 +104,40 @@
                         <div class="vinyl-disc">
                             <div class="vinyl-label"></div>
                         </div>
+
+                        <!-- Front Jacket with Cover Art -->
                         <div class="vinyl-jacket" onclick="openLightbox('card-st001')" title="Click to inspect album art">
                             <span class="catalog-number">ST-001</span>
-                            <div class="jacket-art">
-                                <h3>Project One</h3>
-                                <p class="release-tech">Python & PyTorch</p>
-                            </div>
+                            
+                            <!-- Cover Art Image -->
+                            <img src="assets/images/CMS_img.png" alt="Complaint Management System Cover Art" class="jacket-cover-img">
+
+                            <!-- <div class="jacket-art">
+                                <h3>AI-Powered Complaint Management System</h3>
+                                <p class="release-tech">Python, FastAPI, React, LangGraph</p>
+                            </div> -->
                         </div>
 
-                        <!-- Back of the Album: Tracklist Panel for ST-001 -->
+                        <!-- B-Side Tracklist -->
                         <div class="album-back-cover">
                             <div class="tracklist-header">
                                 <span class="catalog-number">ST-001 // B-SIDE</span>
-                                <h4>Tracklist</h4>
+                                <h4>Tracklist (Deployment</h4>
                             </div>
                             <ul class="tracklist-links">
                                 <li>
-                                    <a href="https://github.com/somak-chatterjee/YOUR-REPO-NAME" target="_blank" class="track-link">
+                                    <!-- Insert your actual repo name here -->
+                                    <a href="https://github.com/somak-chatterjee/complaint-management-system.git" target="_blank" rel="noopener noreferrer" class="track-link">
                                         A1. Source Code (GitHub) ↗
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://hub.docker.com/r/somak-chatterjee/YOUR-CONTAINER" target="_blank" class="track-link">
+                                    <a href="https://hub.docker.com/r/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="track-link">
                                         A2. Container Image (Docker) ↗
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://your-live-deployment.app" target="_blank" class="track-link">
+                                    <a href="https://your-live-deployment.app" target="_blank" rel="noopener noreferrer" class="track-link">
                                         B1. Live Production Build ↗
                                     </a>
                                 </li>
@@ -138,11 +145,12 @@
                             <button type="button" class="close-tracklist-btn" onclick="toggleTracklist('card-st001')">⮌ Flip to Front</button>
                         </div>
                     </div>
+                    
                     <div class="album-details">
-                        <h3>Breast Cancer Classification</h3>
-                        <p>A CNN image analysis platform engineered for precise tumor diagnostics.</p>
-                        <button type="button" class="listen-btn flip-btn" onclick="toggleTracklist('card-st001')">
-                            ▶ Listen Now (View Project)
+                        <h3>AI-Powered Complaint Management System</h3>
+                        <p>An AI-assisted complaint intake tool for pharmaceutical manufacturing quality assurance.</p>
+                        <button type="button" class="listen-btn" onclick="toggleTracklist('card-st001')">
+                            ▶ Listen Now!
                         </button>
                     </div>
                 </article>
