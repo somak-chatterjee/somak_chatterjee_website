@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#interests" class="counter-item">
+                        <a href="#genre" class="counter-item">
                             <span class="item-number">03</span>
                             <h3>Browse by Genre</h3>
                             <p>Explore my hobbies, blogs, and side passions.</p>
@@ -106,7 +106,7 @@
                         </div>
 
                         <!-- Front Jacket with Cover Art -->
-                        <div class="vinyl-jacket" onclick="openLightbox('card-st001')" title="Click to inspect album art">
+                        <div class="vinyl-jacket" onclick="openLightbox('card-st001')" title="Front Cover">
                             <span class="catalog-number">ST-001</span>
                             
                             <!-- Cover Art Image -->
@@ -206,7 +206,7 @@
             </div>
         </section>
 
-        <section id="interests" class="store-section">
+        <section id="genre" class="store-section">
             <a href="#the-counter" class="back-to-counter">&larr; Back to the Counter</a>
             <h2>Browse by Genre</h2>
             <p class="section-subtitle">Sort through the stacks by interest type.</p>
@@ -215,17 +215,44 @@
                 <div class="genre-bin">
                     <div class="bin-divider">
                         <span class="bin-tag">A-Z</span>
-                        <h3>Electronic / Data</h3>
+                        <h3>AI TOOLS</h3>
                     </div>
                     <div class="bin-contents">
                     <ul>
                         <li>
-                            <div class="interest-item">
-                                <div class="interest-text">
-                                    <strong>Python & SQL</strong>
-                                    <span class="tag-meta">Data Manipulation</span>
+                            <div class="genre-item genre-project-item" id="genre-item-st001">
+                                <div class="genre-item-main" onclick="toggleGenreTracklist('genre-item-st001')">
+                                    <div class="genre-item-text">
+                                        <h4>AI-Powered CMS</h4>
+                                        <p>An AI-assisted complaint intake tool</p>
+                                    </div>
+                                    <span class="tracklist-toggle-icon">▼ Open Album</span>
                                 </div>
-                                <div class="mini-vinyl"></div>
+
+                                <!-- Inline B-Side Tracklist Drawer -->
+                                <div class="genre-tracklist-drawer">
+                                    <div class="drawer-header">
+                                        <span class="crate-tag">TRACKLIST</span>
+                                        <button type="button" class="mini-inspect-btn" onclick="event.stopPropagation(); openLightbox('card-st001')">View Front Cover</button>
+                                    </div>
+                                    <ul class="genre-tracklist-links">
+                                        <li>
+                                            <a href="https://github.com/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="genre-track-link">
+                                                <span>A1.</span> Source Code (GitHub) ↗
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://hub.docker.com/r/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="genre-track-link">
+                                                <span>A2.</span> Container Image (Docker) ↗
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://your-live-deployment.app" target="_blank" rel="noopener noreferrer" class="genre-track-link">
+                                                <span>B1.</span> Live Production Build ↗
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </li>
                         <li>
@@ -241,7 +268,16 @@
                             <div class="interest-item">
                                 <div class="interest-text">
                                     <strong>Neural Networks</strong>
-                                    <span class="tag-meta">PyTorch Engineering</span>
+                                    <span class="tag-meta">Deep Learning &amp; Vision</span>
+                                </div>
+                                <div class="mini-vinyl"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="interest-item">
+                                <div class="interest-text">
+                                    <strong>Python &amp; SQL</strong>
+                                    <span class="tag-meta">Data Manipulation</span>
                                 </div>
                                 <div class="mini-vinyl"></div>
                             </div>
@@ -253,7 +289,7 @@
                 <div class="genre-bin">
                     <div class="bin-divider">
                         <span class="bin-tag">NEW</span>
-                        <h3>Indie / Full-Stack</h3>
+                        <h3>INDIE / FULL-STACK</h3>
                     </div>
                     <div class="bin-contents">
                         <ul>
@@ -291,7 +327,7 @@
                 <div class="genre-bin">
                     <div class="bin-divider">
                         <span class="bin-tag">B-SIDES</span>
-                        <h3>Analog Hobbies</h3>
+                        <h3>ANALOG HOBBIES</h3>
                     </div>
                     <div class="bin-contents">
                         <ul>
@@ -417,6 +453,7 @@
             </div>
         </div>
     </dialog>
+    <!-- In Case I want to use this later<span class="genre-cat-tag">[ST-001]</span> -->
 
     <script src="script.js"></script>
 </body>

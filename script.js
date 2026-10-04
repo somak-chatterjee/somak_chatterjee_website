@@ -145,6 +145,35 @@ function toggleTracklist(cardId) {
     }
 }
 
+function toggleGenreTracklist(itemId) {
+    const item = document.getElementById(itemId);
+    if (!item) return;
+    item.classList.toggle('open');
+}
+
+function filterGenre(selectedGenre) {
+    const cards = document.querySelectorAll('.record-card');
+    const tabs = document.querySelectorAll('.genre-tab');
+
+    // Update active tab styling
+    tabs.forEach(tab => {
+        const matches = tab.getAttribute('onclick')?.includes(`'${selectedGenre}'`);
+        tab.classList.toggle('active', !!matches);
+    });
+
+    // Show or hide cards based on data-genre attribute
+    cards.forEach(card => {
+        const cardGenre = card.getAttribute('data-genre');
+        if (selectedGenre === 'all' || cardGenre === selectedGenre) {
+            card.classList.remove('genre-hidden');
+        } else {
+            card.classList.add('genre-hidden');
+            // Reset flipped state if hiding
+            card.classList.remove('show-back');
+        }
+    });
+}
+
 function openLightbox(cardId) {
     const card = document.getElementById(cardId);
     const modal = document.getElementById('album-lightbox');
