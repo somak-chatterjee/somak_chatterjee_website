@@ -145,8 +145,8 @@ header {
 }
 
 /* ==========================================================================
-   5. WORKSPACE BEHAVIOR (Option B: The Countertop Viewport)
-   ========================================================================== */
+    5. WORKSPACE BEHAVIOR (CSS-Native + JS Routing)
+    ========================================================================== */
 
 /* Hide all store sections by default */
 .store-section {
@@ -159,11 +159,17 @@ header {
     border-radius: 4px;
 }
 
-/* This special class will be added by JavaScript to reveal a section */
+/* Reveal when targeted by URL hash OR via .active class */
+.store-section:target,
 .store-section.active {
     display: block;
-    /* A quick CSS animation to make the section fade in smoothly */
     animation: fadeIn 0.4s ease forwards;
+}
+
+/* When any section is targeted/active, automatically hide the counter */
+body:has(.store-section:target) #the-counter,
+body:has(.store-section.active) #the-counter {
+    display: none;
 }
 
 @keyframes fadeIn {
@@ -1153,6 +1159,151 @@ header {
 .genre-project-item:hover {
     border-color: rgba(255, 179, 0, 0.5);
     background: rgba(255, 179, 0, 0.04);
+}
+
+/* Mini CD Container */
+.mini-cd {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* Iridescent holographic metallic reflection */
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        #b8b8b8 0deg,
+        #e4e4e4 45deg,
+        rgba(255, 128, 128, 0.7) 90deg,
+        rgba(255, 255, 128, 0.7) 135deg,
+        rgba(128, 255, 128, 0.7) 180deg,
+        rgba(128, 255, 255, 0.7) 225deg,
+        rgba(128, 128, 255, 0.7) 270deg,
+        #e4e4e4 315deg,
+        #b8b8b8 360deg
+    );
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        0 2px 6px rgba(0, 0, 0, 0.4);
+    transform: translateY(-50%) translateX(0);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clear plastic inner data ring */
+.cd-inner-ring {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center spindle hole */
+.cd-spindle-hole {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #181818; /* matches background behind the card */
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+/* Slide out on hover and catch the light with a spin */
+.genre-project-item:hover .mini-cd {
+    transform: translateY(-50%) translateX(24px) rotate(90deg);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* Let crate CDs peek outside their cards without clipping */
+.crate-card,
+.crate-card-body {
+    overflow: visible !important;
+}
+
+/* Base styling for all items inside a crate */
+.genre-item {
+    position: relative;
+    margin-bottom: 12px;
+    z-index: 1;
+    cursor: default;
+}
+
+.genre-item-content {
+    position: relative;
+    z-index: 2;
+    background: #181818;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 179, 0, 0.15);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.genre-item:hover .genre-item-content {
+    border-color: rgba(255, 179, 0, 0.4);
+}
+
+.genre-item-content h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+}
+
+.genre-item-content p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Keep the project item's existing drawer behavior while matching crate styling */
+.genre-project-item {
+    border: none;
+    background: transparent;
+}
+
+.genre-project-item .genre-item-main {
+    position: relative;
+    z-index: 2;
+    background: #181818;
+    border: 1px solid rgba(255, 179, 0, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Shared CD appearance and hover reveal for crate items */
+.mini-cd {
+    top: 50%;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+}
+
+.cd-inner-ring {
+    width: 18px;
+    height: 18px;
+}
+
+.cd-spindle-hole {
+    width: 7px;
+    height: 7px;
+}
+
+.genre-item:hover .mini-cd {
+    opacity: 1;
+    transform: translateY(-50%) translateX(24px) rotate(90deg);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 .genre-item-main {

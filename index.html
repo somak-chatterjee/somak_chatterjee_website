@@ -16,7 +16,6 @@
     </header>
 
     <main>
-
         <section id="the-counter">
             <div class="shopkeeper-intro">
                 <h2>Welcome to the Counter</h2>
@@ -210,155 +209,54 @@
             <a href="#the-counter" class="back-to-counter">&larr; Back to the Counter</a>
             <h2>Browse by Genre</h2>
             <p class="section-subtitle">Sort through the stacks by interest type.</p>
-            
-            <div class="genre-shelf">
-                <div class="genre-bin">
-                    <div class="bin-divider">
-                        <span class="bin-tag">A-Z</span>
+
+            <div class="crates-grid">
+                <div class="crate-card">
+                    <div class="crate-card-header">
+                        <span class="crate-tag">A-Z</span>
                         <h3>AI TOOLS</h3>
                     </div>
-                    <div class="bin-contents">
-                    <ul>
-                        <li>
-                            <div class="genre-item genre-project-item" id="genre-item-st001">
-                                <div class="genre-item-main" onclick="toggleGenreTracklist('genre-item-st001')">
-                                    <div class="genre-item-text">
-                                        <h4>AI-Powered CMS</h4>
-                                        <p>An AI-assisted complaint intake tool</p>
-                                    </div>
-                                    <span class="tracklist-toggle-icon">▼ Open Album</span>
+                    <div class="crate-card-body">
+                        <div class="genre-item genre-project-item" id="genre-item-st001">
+                            <div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div>
+                            <div class="genre-item-main" onclick="toggleGenreTracklist('genre-item-st001')">
+                                <div class="genre-item-text">
+                                    <h4>AI-Powered CMS <span class="genre-cat-tag">[ST-001]</span></h4>
+                                    <p>An AI-assisted complaint intake tool</p>
                                 </div>
-
-                                <!-- Inline B-Side Tracklist Drawer -->
-                                <div class="genre-tracklist-drawer">
-                                    <div class="drawer-header">
-                                        <span class="crate-tag">TRACKLIST</span>
-                                        <button type="button" class="mini-inspect-btn" onclick="event.stopPropagation(); openLightbox('card-st001')">View Front Cover</button>
-                                    </div>
-                                    <ul class="genre-tracklist-links">
-                                        <li>
-                                            <a href="https://github.com/somak-chatterjee/complaint-management-system.git" target="_blank" rel="noopener noreferrer" class="genre-track-link">
-                                                <span>A1.</span> Source Code (GitHub) ↗
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://hub.docker.com/r/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="genre-track-link">
-                                                <span>A2.</span> Container Image (Docker) ↗
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://your-live-deployment.app" target="_blank" rel="noopener noreferrer" class="genre-track-link">
-                                                <span>B1.</span> Live Production Build ↗
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <span class="tracklist-toggle-icon">▼ B-SIDE</span>
                             </div>
-                        </li>
-                        <li>
-                            <div class="interest-item">
-                                <div class="interest-text">
-                                    <strong>Large Language Models</strong>
-                                    <span class="tag-meta">Generative AI</span>
+                            <div class="genre-tracklist-drawer">
+                                <div class="drawer-header">
+                                    <span class="crate-tag">B-SIDE TRACKS</span>
+                                    <button type="button" class="mini-inspect-btn" onclick="openLightbox('card-st001')">🔍 Inspect Art</button>
                                 </div>
-                                <div class="mini-vinyl"></div>
+                                <ul class="genre-tracklist-links">
+                                    <li><a href="https://github.com/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="genre-track-link"><span>A1.</span> Source Code (GitHub) ↗</a></li>
+                                    <li><a href="https://hub.docker.com/r/somak-chatterjee/breast-cancer-classification" target="_blank" rel="noopener noreferrer" class="genre-track-link"><span>A2.</span> Container Image (Docker) ↗</a></li>
+                                    <li><a href="https://your-live-deployment.app" target="_blank" rel="noopener noreferrer" class="genre-track-link"><span>B1.</span> Live Production Build ↗</a></li>
+                                </ul>
                             </div>
-                        </li>
-                        <li>
-                            <div class="interest-item">
-                                <div class="interest-text">
-                                    <strong>Neural Networks</strong>
-                                    <span class="tag-meta">Deep Learning &amp; Vision</span>
-                                </div>
-                                <div class="mini-vinyl"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="interest-item">
-                                <div class="interest-text">
-                                    <strong>Python &amp; SQL</strong>
-                                    <span class="tag-meta">Data Manipulation</span>
-                                </div>
-                                <div class="mini-vinyl"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                </div>
-
-                <div class="genre-bin">
-                    <div class="bin-divider">
-                        <span class="bin-tag">NEW</span>
-                        <h3>INDIE / FULL-STACK</h3>
-                    </div>
-                    <div class="bin-contents">
-                        <ul>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>Node.js Frameworks</strong>
-                                        <span class="tag-meta">Backend Design</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>SvelteKit & TS</strong>
-                                        <span class="tag-meta">Interactive UIs</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>Docker & Prisma</strong>
-                                        <span class="tag-meta">Cloud Dev Infrastructure</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                        </ul>
+                        </div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Large Language Models</h4><p>Generative AI</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Neural Networks</h4><p>Deep Learning &amp; Vision</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Python &amp; SQL</h4><p>Data Manipulation</p></div></div>
                     </div>
                 </div>
-
-                <div class="genre-bin">
-                    <div class="bin-divider">
-                        <span class="bin-tag">B-SIDES</span>
-                        <h3>ANALOG HOBBIES</h3>
+                <div class="crate-card">
+                    <div class="crate-card-header"><span class="crate-tag">NEW</span><h3>INDIE / FULL-STACK</h3></div>
+                    <div class="crate-card-body">
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Node.js Frameworks</h4><p>Backend Design</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>SvelteKit &amp; TS</h4><p>Interactive UIs</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Docker &amp; Prisma</h4><p>Cloud Dev Infrastructure</p></div></div>
                     </div>
-                    <div class="bin-contents">
-                        <ul>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>Vinyl Collection</strong>
-                                        <span class="tag-meta">Audio Archeology</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>Record Store Aesthetics</strong>
-                                        <span class="tag-meta">Retro UI Design</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="interest-item">
-                                    <div class="interest-text">
-                                        <strong>Dutch Language</strong>
-                                        <span class="tag-meta">Level A1 Studies</span>
-                                    </div>
-                                    <div class="mini-vinyl"></div>
-                                </div>
-                            </li>
-                        </ul>
+                </div>
+                <div class="crate-card">
+                    <div class="crate-card-header"><span class="crate-tag">B-SIDES</span><h3>ANALOG HOBBIES</h3></div>
+                    <div class="crate-card-body">
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Vinyl Collection</h4><p>Audio Archeology</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Record Store Aesthetics</h4><p>Retro UI Design</p></div></div>
+                        <div class="genre-item"><div class="mini-cd" aria-hidden="true"><div class="cd-inner-ring"><div class="cd-spindle-hole"></div></div></div><div class="genre-item-content"><h4>Dutch Language</h4><p>Level A1 Studies</p></div></div>
                     </div>
                 </div>
             </div>

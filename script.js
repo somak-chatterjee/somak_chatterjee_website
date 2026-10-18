@@ -1,51 +1,60 @@
-// Wait for the HTML document to fully load before running the script
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Grab all our interactive elements from the HTML
+// ==========================================
+// 1. UNIFIED STORE NAVIGATION ROUTER
+// ==========================================
+function navigateToSection(targetId) {
     const counterMenu = document.getElementById("the-counter");
-    const counterLinks = document.querySelectorAll(".counter-item");
-    const backButtons = document.querySelectorAll(".back-to-counter");
     const allSections = document.querySelectorAll(".store-section");
+    const cleanId = (targetId || "").replace("#", "");
 
-    // 2. Listening for when a user clicks a Counter Card
-    counterLinks.forEach(link => {
-        link.addEventListener("click", (event) => {
-            // Prevent the default browser behavior of jump-scrolling to the anchor
-            event.preventDefault();
-
-            // Get the specific ID target (e.g., "#portfolio" or "#about")
-            const targetId = link.getAttribute("href");
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                // Hide the main Counter Menu
-                counterMenu.style.display = "none";
-                
-                // Show the targeted section by adding our active class
-                targetSection.classList.add("active");
-            }
+    if (!cleanId || cleanId === "the-counter") {
+        allSections.forEach(section => {
+            section.classList.remove("active");
+            section.style.display = "none";
         });
-    });
-
-    // 3. Listening for when a user clicks "Back to the Counter"
-    backButtons.forEach(button => {
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
-
-            // Hide all open store sections by removing the active class
+        if (counterMenu) counterMenu.style.display = "block";
+    } else {
+        const targetSection = document.getElementById(cleanId);
+        if (targetSection && targetSection.classList.contains("store-section")) {
+            if (counterMenu) counterMenu.style.display = "none";
             allSections.forEach(section => {
                 section.classList.remove("active");
+                section.style.display = "none";
             });
+            targetSection.classList.add("active");
+            targetSection.style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }
+}
 
-            // Bring the main Counter Menu back into view
-            counterMenu.style.display = "block";
-        });
-    });
+document.addEventListener("click", (event) => {
+    const counterLink = event.target.closest(".counter-item");
+    if (counterLink) {
+        event.preventDefault();
+        const targetId = counterLink.getAttribute("href");
+        window.location.hash = targetId;
+        navigateToSection(targetId);
+        return;
+    }
 
+    const backBtn = event.target.closest(".back-to-counter");
+    if (backBtn) {
+        event.preventDefault();
+        window.location.hash = "the-counter";
+        navigateToSection("the-counter");
+    }
+});
 
-    // ==========================================
-    // 2. NEW GUESTBOOK LISTENING STATION LOGIC
-    // ==========================================
+window.addEventListener("hashchange", () => {
+    navigateToSection(window.location.hash);
+});
+
+// ==========================================
+// 2. GUESTBOOK / ORDER SHEET LOGIC
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    navigateToSection(window.location.hash);
+
     const form = document.getElementById('order-sheet-form');
     const messagesContainer = document.getElementById('messages-container');
 
@@ -95,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Intercept form submissions and route them to post_orders.js
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); 
